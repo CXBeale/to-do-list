@@ -13,8 +13,15 @@ document.addEventListener('DOMContentLoaded', function() {
 			// Create new list item
 			const li = document.createElement('li');
 			li.textContent = taskText;
+			// Add click event to toggle completed state
+			li.addEventListener('click', function() {
+				li.classList.toggle('completed');
+			});
+			// Append to the list
 			list.appendChild(li); // Add to list
 			input.value = ''; // Clear input
 		}
 	});
+
+
 });
