@@ -8,8 +8,24 @@ __pycache__/
 # Ignore Django migrations
 */migrations/
 
+# Django migrations cache
+**/migrations/__pycache__/
+
 # Ignore environment variables
 .env
 
 # Ignore VS Code settings
 .vscode/
+
+# IDE/editor files
+.vscode/
+*.swp
+*.sublime-workspace
+*.sublime-project
+
+# Django database
+db.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db
