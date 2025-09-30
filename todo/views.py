@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TaskForm
 from .models import Task
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -9,22 +11,27 @@ def home(request):
     return render(request, 'todo/home.html')
 
 # View to list all tasks
+@login_required
 def task_list(request):
-    tasks = Task.objects.all()  # Get all tasks from the database
+    tasks = Task.objects.filter(user=request.user) # filter tasks by user
     return render(request, 'todo/task_list.html', {'tasks': tasks})
 
-# New view to handle adding a task
+# New view to handle adding a task (specific to a user)
+@login_required
 def add_task(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
         if form.is_valid():
-            form.save()
+            task = form.save(commit=False)  # Don’t save to DB yet
+            task.user = request.user        # Assign the current user
+            task.save()                     # Now save to DB
             return redirect('task_list')
     else:
         form = TaskForm()
     return render(request, 'todo/add_task.html', {'form': form})
 
 # New view to mark a task as complete
+@login_required
 def complete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     task.completed = True
@@ -32,6 +39,7 @@ def complete_task(request, task_id):
     return redirect('task_list')
 
 # New view to delete a task
+@login_required
 def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     task.delete()
