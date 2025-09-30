@@ -12,6 +12,7 @@
             {{ task.title }} {% if task.completed %}(Completed){% else %}
             <a href="{% url 'complete_task' task.id %}">Mark as complete</a>
             {% endif %}
+            <a href="{% url 'delete_task' task.id %}">Delete</a>
         </li>
         {% empty %}
             <li>No tasks yet!</li>

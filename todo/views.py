@@ -30,3 +30,9 @@ def complete_task(request, task_id):
     task.completed = True
     task.save()
     return redirect('task_list')
+
+# New view to delete a task
+def delete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    task.delete()
+    return redirect('task_list')
