@@ -8,9 +8,11 @@
     <h1>Your Tasks</h1>
     <ul>
         {% for task in tasks %}
-            <li>
-                {{ task.title }} {% if task.completed %}(Completed){% endif %}
-            </li>
+        <li>
+            {{ task.title }} {% if task.completed %}(Completed){% else %}
+            <a href="{% url 'complete_task' task.id %}">Mark as complete</a>
+            {% endif %}
+        </li>
         {% empty %}
             <li>No tasks yet!</li>
         {% endfor %}

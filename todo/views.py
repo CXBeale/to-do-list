@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TaskForm
 from .models import Task
 
@@ -23,3 +23,10 @@ def add_task(request):
     else:
         form = TaskForm()
     return render(request, 'todo/add_task.html', {'form': form})
+
+# New view to mark a task as complete
+def complete_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id)
+    task.completed = True
+    task.save()
+    return redirect('task_list')

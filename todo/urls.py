@@ -5,4 +5,6 @@ urlpatterns = [
     path('', views.home, name='home'),  # '' means the root of /todo/
     path('tasks/', views.task_list, name='task_list'),  # /todo/tasks/ will show the list of tasks
     path('add/', views.add_task, name='add_task'),
+    path('complete/<int:task_id>/', views.complete_task, name='complete_task'),
+    
 ]
