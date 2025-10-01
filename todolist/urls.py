@@ -20,6 +20,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('todo.urls')),  # This makes your todo app available at the root URL
     path('todo/', include('todo.urls')),  # This connects /todo/ to your app
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
