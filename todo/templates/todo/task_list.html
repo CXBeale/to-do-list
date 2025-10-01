@@ -17,8 +17,12 @@
     <ul>
       {% for task in tasks %}
       <li>
-        {{ task.title }} {% if task.completed %}(Completed){% else %}
-        <a href="{% url 'complete_task' task.id %}">Mark as complete</a>
+        {{ task.title }} 
+        {% if task.completed %}
+            (Completed)
+            <a href="{% url 'toggle_complete' task.id %}">Mark as incomplete</a>
+        {% else %}
+            <a href="{% url 'complete_task' task.id %}">Mark as complete</a>
         {% endif %}
         <a href="{% url 'edit_task' task.id %}">Edit</a>
         <a href="{% url 'delete_task' task.id %}">Delete</a>

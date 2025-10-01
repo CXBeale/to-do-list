@@ -57,3 +57,14 @@ def edit_task(request, task_id):
     else:
         form = TaskForm(instance=task)
     return render(request, 'todo/edit_task.html', {'form': form, 'task': task})
+
+# View to toggle the completion status of a task
+@login_required
+def toggle_complete(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+    task.completed = not task.completed
+    task.save()
+    return redirect('task_list')
+
+
+
