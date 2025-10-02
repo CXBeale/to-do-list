@@ -24,5 +24,6 @@ urlpatterns = [
     path('todo/', include('todo.urls')),  # This connects /todo/ to your app
     path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
+    path('accounts/', include('allauth.urls')),  # Include allauth URLs for authentication
 ]
     
