@@ -1,23 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome | To-Do List</title>
-    <link rel="stylesheet" href="/static/css/style.css">
-    <style>
-        body { background: #f7f7f9; font-family: 'Segoe UI', sans-serif; }
-        .landing-container { max-width: 500px; margin: 60px auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.07); padding: 2.5rem 2rem; text-align: center; }
-        .landing-title { font-size: 2.2rem; margin-bottom: 0.5rem; color: #333; }
-        .landing-desc { color: #666; margin-bottom: 2rem; }
-        .cta-btn { display: block; width: 100%; margin: 0.5rem 0; padding: 0.9rem; font-size: 1.1rem; border: none; border-radius: 6px; background: #4f8cff; color: #fff; text-decoration: none; transition: background 0.2s; }
-        .cta-btn:hover { background: #2563eb; }
-        .cta-btn.secondary { background: #e0e7ef; color: #2563eb; }
-        .cta-btn.secondary:hover { background: #c7d2fe; }
-        .or-divider { margin: 1.2rem 0; color: #aaa; font-size: 0.95rem; }
-    </style>
-</head>
-<body>
+{% extends "todo/base.html" %}
+{% block title %}Welcome | To-Do List{% endblock %}
+{% block content %}
     <div class="landing-container">
         <div class="landing-title">Welcome to To-Do List</div>
         <div class="landing-desc">Organize your tasks, boost your productivity, and never forget a thing. Sign in or create an account to get started!</div>
@@ -29,5 +12,4 @@
             <a href="{% url 'account_signup' %}" class="cta-btn secondary">Sign Up</a>
         {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}
