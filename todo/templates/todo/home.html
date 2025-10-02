@@ -21,13 +21,13 @@
 <body>
     <div class="landing-container">
         <div class="landing-title">Welcome to To-Do List</div>
-        <div class="landing-desc">Organize your tasks, boost your productivity, and never forget a thing. Start as a guest or create an account to save your progress!</div>
+        <div class="landing-desc">Organize your tasks, boost your productivity, and never forget a thing. Sign in or create an account to get started!</div>
         {% if user.is_authenticated %}
             <a href="{% url 'task_list' %}" class="cta-btn">Go to My Tasks</a>
         {% else %}
-            <a href="{% url 'task_list' %}?guest=true" class="cta-btn">Start as Guest</a>
+            <a href="{% url 'account_login' %}" class="cta-btn">Log In</a>
             <div class="or-divider">or</div>
-            <a href="{% url 'account_login' %}" class="cta-btn secondary">Sign Up / Log In</a>
+            <a href="{% url 'account_signup' %}" class="cta-btn secondary">Sign Up</a>
         {% endif %}
     </div>
 </body>
