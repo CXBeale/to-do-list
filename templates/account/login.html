@@ -6,10 +6,12 @@
 {% block content %}
 <div class="row justify-content-center">
   <div class="col-md-6 col-lg-4">
-    <h2 class="mb-4 text-center">Sign In</h2>
+    <h2 class="mb-4 text-center">Log In</h2>
     <form method="post" action="{% url 'account_login' %}">
       {% csrf_token %}
-      {{ form.non_field_errors }}
+      {% if form.non_field_errors %}
+  <div class="text-danger small mb-3 text-center">{{ form.non_field_errors|join:"<br>"|safe }}</div>
+      {% endif %}
       <div class="mb-3">
         {{ form.login.label_tag }}
         {{ form.login|add_class:"form-control" }}
