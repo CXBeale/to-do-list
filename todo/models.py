@@ -11,3 +11,21 @@ class Task(models.Model):
     
     def __str__(self):
         return self.title  # Shows the task title in admin and shell
+
+# Model for categorizing tasks into lists
+class List(models.Model):
+    list_name = models.CharField(max_length=100)
+    description = models.TextField(blank=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    @property
+    def total_tasks(self):
+        return self.task_set.count()
+
+    @property
+    def completed_tasks(self):
+        return self.task_set.filter(completed=True).count()
+
+    def __str__(self):
+        return self.list_name
