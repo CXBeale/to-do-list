@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import TaskForm
-from .models import Task
+from .models import Task, List
+from .forms_list import ListForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -13,8 +14,8 @@ def home(request):
 # View to list all tasks
 @login_required
 def task_list(request):
-    tasks = Task.objects.filter(user=request.user) # filter tasks by user
-    return render(request, 'todo/task_list.html', {'tasks': tasks})
+    lists = List.objects.filter(user=request.user).prefetch_related('tasks')
+    return render(request, 'todo/task_list.html', {'lists': lists})
 
 # New view to handle adding a task (specific to a user)
 @login_required
@@ -65,6 +66,46 @@ def toggle_complete(request, task_id):
     task.completed = not task.completed
     task.save()
     return redirect('task_list')
+
+
+# List management views
+@login_required
+def list_overview(request):
+    lists = List.objects.filter(user=request.user)
+    return render(request, 'todo/list_overview.html', {'lists': lists})
+
+@login_required
+def create_list(request):
+    if request.method == 'POST':
+        form = ListForm(request.POST)
+        if form.is_valid():
+            new_list = form.save(commit=False)
+            new_list.user = request.user
+            new_list.save()
+            return redirect('list_overview')
+    else:
+        form = ListForm()
+    return render(request, 'todo/create_list.html', {'form': form})
+
+@login_required
+def edit_list(request, list_id):
+    list_obj = get_object_or_404(List, id=list_id, user=request.user)
+    if request.method == 'POST':
+        form = ListForm(request.POST, instance=list_obj)
+        if form.is_valid():
+            form.save()
+            return redirect('list_overview')
+    else:
+        form = ListForm(instance=list_obj)
+    return render(request, 'todo/edit_list.html', {'form': form, 'list': list_obj})
+
+@login_required
+def delete_list(request, list_id):
+    list_obj = get_object_or_404(List, id=list_id, user=request.user)
+    if request.method == 'POST':
+        list_obj.delete()
+        return redirect('list_overview')
+    return render(request, 'todo/delete_list.html', {'list': list_obj})
 
 
 
