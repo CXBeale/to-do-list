@@ -20,7 +20,7 @@ def task_list(request):
 @login_required
 def add_task(request):
     if request.method == 'POST':
-        form = TaskForm(request.POST)
+        form = TaskForm(request.POST or None, user=request.user)
         if form.is_valid():
             task = form.save(commit=False)  # Don’t save to DB yet
             task.user = request.user        # Assign the current user
