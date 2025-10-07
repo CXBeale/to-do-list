@@ -7,40 +7,44 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-# View for the home page
+# home page
 def home(request):
     return render(request, 'todo/home.html')
 
-# View to list all tasks
-@login_required
-def task_list(request):
-    lists = List.objects.filter(user=request.user).prefetch_related('tasks')
-    return render(request, 'todo/task_list.html', {'lists': lists})
 
-# New view to handle adding a task (specific to a user)
+# Add task (specific to a user)
 @login_required
-def add_task(request):
+def add_task(request, list_id=None):
+    initial = {}
+    if list_id:
+        try:
+            initial['list'] = List.objects.get(id=list_id, user=request.user)
+        except List.DoesNotExist:
+            pass
     if request.method == 'POST':
         form = TaskForm(request.POST or None, user=request.user)
         if form.is_valid():
-            task = form.save(commit=False)  # Don’t save to DB yet
-            task.user = request.user        # Assign the current user
-            # If no list is selected, assign to 'General' list
+            task = form.save(commit=False)
+            task.user = request.user
+            if not task.list and list_id:
+                try:
+                    task.list = List.objects.get(id=list_id, user=request.user)
+                except List.DoesNotExist:
+                    pass
             if not task.list:
-                from .models import List
                 general_list, created = List.objects.get_or_create(
                     user=request.user,
                     list_name='General',
                     defaults={'description': 'Default list for uncategorized tasks.'}
                 )
                 task.list = general_list
-            task.save()                     # Now save to DB
-            return redirect('task_list')
+            task.save()
+            return redirect('list_overview')
     else:
-        form = TaskForm(user=request.user)
+        form = TaskForm(user=request.user, initial=initial)
     return render(request, 'todo/add_task.html', {'form': form})
 
-# New view to mark a task as complete
+# mark a task as complete
 @login_required
 def complete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
@@ -80,8 +84,18 @@ def toggle_complete(request, task_id):
 # List management views
 @login_required
 def list_overview(request):
-    lists = List.objects.filter(user=request.user)
-    return render(request, 'todo/list_overview.html', {'lists': lists})
+    lists = list(List.objects.filter(user=request.user))
+    general = None
+    for l in lists:
+        if l.list_name.lower() == 'general':
+            general = l
+            break
+    if general:
+        lists.remove(general)
+        lists = [general] + sorted(lists, key=lambda x: x.list_name.lower())
+    else:
+        lists = sorted(lists, key=lambda x: x.list_name.lower())
+    return render(request, 'todo/lists_and_tasks.html', {'lists': lists})
 
 @login_required
 def create_list(request):

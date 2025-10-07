@@ -1,0 +1,48 @@
+{% extends 'todo/base.html' %}
+{% block title %}Lists & Tasks{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2>Your Lists & Tasks</h2>
+    <a href="{% url 'create_list' %}" class="btn btn-primary mb-3">Create New List</a>
+    <a href="{% url 'add_task' %}" class="btn btn-success mb-3 ms-2">Add Task</a>
+    <ul class="list-group mb-4">
+        {% for list in lists %}
+        <li class="list-group-item">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ list.list_name }}</strong>
+                    <span class="text-muted">({{ list.total_tasks }} tasks, {{ list.completed_tasks }} completed)</span>
+                </div>
+                <div>
+                    <a href="{% url 'add_task_to_list' list.id %}" class="btn btn-sm btn-success me-2">Add Task</a>
+                    <a href="{% url 'edit_list' list.id %}" class="btn btn-sm btn-secondary">Edit</a>
+                    <a href="{% url 'delete_list' list.id %}" class="btn btn-sm btn-danger">Delete</a>
+                </div>
+            </div>
+            <ul class="list-group mt-2">
+                {% for task in list.tasks.all %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                        {{ task.title }} {% if task.completed %}<span class="badge bg-success ms-2">Completed</span>{% endif %}
+                    </span>
+                    <span>
+                        {% if task.completed %}
+                            <a href="{% url 'toggle_complete' task.id %}" class="btn btn-sm btn-warning">Mark as incomplete</a>
+                        {% else %}
+                            <a href="{% url 'complete_task' task.id %}" class="btn btn-sm btn-success">Mark as complete</a>
+                        {% endif %}
+                        <a href="{% url 'edit_task' task.id %}" class="btn btn-sm btn-secondary">Edit</a>
+                        <a href="{% url 'delete_task' task.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    </span>
+                </li>
+                {% empty %}
+                <li class="list-group-item">No tasks in this list.</li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% empty %}
+        <li class="list-group-item">No lists found.</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

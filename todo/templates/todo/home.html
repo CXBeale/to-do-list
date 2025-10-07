@@ -5,7 +5,7 @@
         <div class="landing-title">Welcome to To-Do List</div>
         <div class="landing-desc">Organize your tasks, boost your productivity, and never forget a thing. Sign in or create an account to get started!</div>
         {% if user.is_authenticated %}
-            <a href="{% url 'task_list' %}" class="cta-btn">Go to My Tasks</a>
+            <a href="{% url 'list_overview' %}" class="cta-btn">Go to My Tasks</a>
         {% else %}
             <a href="{% url 'account_login' %}" class="cta-btn">Sign In</a>
             <div class="or-divider">or</div>

@@ -7,7 +7,7 @@
         {% for list in lists %}
         <li class="list-group-item d-flex justify-content-between align-items-center">
             <div>
-                <a href="{% url 'task_list' %}?list_id={{ list.id }}">{{ list.list_name }}</a>
+                <span>{{ list.list_name }}</span>
                 <span class="text-muted">({{ list.total_tasks }} tasks, {{ list.completed_tasks }} completed)</span>
             </div>
             <div>
