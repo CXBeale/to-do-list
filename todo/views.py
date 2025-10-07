@@ -25,10 +25,19 @@ def add_task(request):
         if form.is_valid():
             task = form.save(commit=False)  # Don’t save to DB yet
             task.user = request.user        # Assign the current user
+            # If no list is selected, assign to 'General' list
+            if not task.list:
+                from .models import List
+                general_list, created = List.objects.get_or_create(
+                    user=request.user,
+                    list_name='General',
+                    defaults={'description': 'Default list for uncategorized tasks.'}
+                )
+                task.list = general_list
             task.save()                     # Now save to DB
             return redirect('task_list')
     else:
-        form = TaskForm()
+        form = TaskForm(user=request.user)
     return render(request, 'todo/add_task.html', {'form': form})
 
 # New view to mark a task as complete

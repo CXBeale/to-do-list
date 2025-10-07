@@ -22,11 +22,11 @@ class List(models.Model):
 
     @property
     def total_tasks(self):
-        return self.task_set.count()
+        return self.tasks.count()
 
     @property
     def completed_tasks(self):
-        return self.task_set.filter(completed=True).count()
+        return self.tasks.filter(completed=True).count()
 
     def __str__(self):
         return self.list_name
