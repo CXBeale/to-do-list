@@ -50,14 +50,14 @@ def complete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     task.completed = True
     task.save()
-    return redirect('task_list')
+    return redirect('list_overview')
 
 # New view to delete a task
 @login_required
 def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     task.delete()
-    return redirect('task_list')
+    return redirect('list_overview')
 
 # New view to edit a task
 @login_required
@@ -67,7 +67,7 @@ def edit_task(request, task_id):
         form = TaskForm(request.POST, instance=task)
         if form.is_valid():
             form.save()
-            return redirect('task_list')
+            return redirect('list_overview')
     else:
         form = TaskForm(instance=task)
     return render(request, 'todo/edit_task.html', {'form': form, 'task': task})
@@ -78,7 +78,7 @@ def toggle_complete(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
     task.completed = not task.completed
     task.save()
-    return redirect('task_list')
+    return redirect('list_overview')
 
 
 # List management views
