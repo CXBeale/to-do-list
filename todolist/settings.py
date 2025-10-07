@@ -13,20 +13,25 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 import dj_database_url
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-=1taz9-bc-@n!u+t+4%3t8k51a^(%0u&p0^@4$%g7d)#247ff&'
+#secret key and debug from .env
+env = environ.Env()
+environ.Env.read_env()
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+SECRET_KEY = env('SECRET_KEY')
+DEBUG = env.bool('DEBUG', default=False)
 
+#production settings
+# ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=['localhost'])
+
+# development settings
 ALLOWED_HOSTS = ['*']
 
 LOGIN_URL = '/login/'
