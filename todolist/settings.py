@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 #secret key and debug from .env
 env = environ.Env()
-environ.Env.read_env()
+environ.Env.read_env(str(BASE_DIR / '.env'))
 
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', default=False)
