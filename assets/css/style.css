@@ -1,3 +1,18 @@
+.delete-icon-link {
+  background: none !important;
+  border: none !important;
+  padding: 0.25rem 0.5rem;
+  box-shadow: none !important;
+}
+.delete-icon-link .bi-trash-fill {
+  color: #e3342f;
+  font-size: 1.2em;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+.delete-icon-link:hover .bi-trash-fill {
+  color: #b91c1c;
+}
 /* Edit icon styles */
 .edit-icon-link {
   background: none !important;

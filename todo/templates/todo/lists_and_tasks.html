@@ -34,7 +34,9 @@
                         <a href="{% url 'edit_task' task.id %}" class="edit-icon-link" title="Edit">
                             <i class="bi bi-pencil-fill ms-1"></i>
                         </a>
-                        <a href="{% url 'delete_task' task.id %}" class="btn btn-sm btn-danger">Delete</a>
+                        <a href="{% url 'delete_task' task.id %}" class="delete-icon-link" title="Delete">
+                            <i class="bi bi-trash-fill"></i>
+                        </a>
                     </span>
                 </li>
 
