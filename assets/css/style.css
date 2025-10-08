@@ -1,3 +1,36 @@
+/* Progress bar width responsive adjustment */
+.list-progress-bar {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .list-progress-bar {
+    width: 50%;
+  }
+}
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #fff;
+  --accent-blue: #a5d8ff;
+  --accent-green: #b2f2bb;
+  --accent-orange: #ffd6a5;
+  --accent-yellow: #fff3bf;
+  --accent-yellow-dark: #ffe066;
+  --accent-red: #ffadad;
+  --text-main: #22223b;
+  --text-secondary: #666;
+}
+/* Style for nested list groups */
+.list-group-item {
+  background: var(--accent-yellow-dark) !important;
+  color: var(--text-main) !important;
+}
+
+/* Style for list items */
+.list-item {
+  background: var(--accent-yellow) !important;
+  color: var(--text-main) !important;
+}
 /* Add icon styles */
 .add-icon-link {
   background: none !important;

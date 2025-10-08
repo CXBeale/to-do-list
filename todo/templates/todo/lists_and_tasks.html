@@ -9,25 +9,38 @@
         {% for list in lists %}
         <li class="list-group-item">
             <div class="d-flex justify-content-between align-items-center">
-                <div>
-                    <strong>{{ list.list_name }}</strong>
-                    <span class="text-muted">({{ list.total_tasks }} tasks, {{ list.completed_tasks }} completed)</span>
-                </div>
-                <div>
-                    <a href="{% url 'add_task_to_list' list.id %}" class="add-icon-link" title="Add Task">
-                        <i class="bi bi-plus-circle-fill"></i>
-                    </a>
-                    <a href="{% url 'edit_list' list.id %}" class="edit-icon-link" title="Edit List">
-                        <i class="bi bi-pencil-fill ms-1"></i>
-                    </a>
-                    <a href="{% url 'delete_list' list.id %}" class="delete-icon-link" title="Delete List">
-                        <i class="bi bi-trash-fill"></i>
-                    </a>
+                <div style="width:100%;">
+                    <div class="d-flex align-items-center justify-content-between mt-1 mb-2">
+                        <strong>{{ list.list_name }}</strong>
+                        <div>
+                            <a href="{% url 'add_task_to_list' list.id %}" class="add-icon-link" title="Add Task">
+                                <i class="bi bi-plus-circle-fill"></i>
+                            </a>
+                            <a href="{% url 'edit_list' list.id %}" class="edit-icon-link" title="Edit List">
+                                <i class="bi bi-pencil-fill ms-1"></i>
+                            </a>
+                            <a href="{% url 'delete_list' list.id %}" class="delete-icon-link" title="Delete List">
+                                <i class="bi bi-trash-fill"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {% if list.total_tasks > 0 %}
+                        {% widthratio list.completed_tasks list.total_tasks 100 as percent %}
+                        <div class="progress list-progress-bar mb-2" style="height: 16px; width: 100%;">
+                            <div class="progress-bar bg-success" role="progressbar"
+                                 style="width: {{ percent }}%;"
+                                 aria-valuenow="{{ list.completed_tasks }}"
+                                 aria-valuemin="0"
+                                 aria-valuemax="{{ list.total_tasks }}">
+                                {{ list.completed_tasks }}/{{ list.total_tasks }}
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <ul class="list-group mt-2">
                 {% for task in list.tasks.all %}
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                <li class="list-item list-group-item d-flex justify-content-between align-items-center">
                     
                     
                     
@@ -51,7 +64,7 @@
 
 
                 {% empty %}
-                <li class="list-group-item">No tasks in this list.</li>
+                <li class="list-item list-group-item">No tasks in this list.</li>
                 {% endfor %}
             </ul>
         </li>
