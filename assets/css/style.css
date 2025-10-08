@@ -1,3 +1,8 @@
+/* Always show vertical scrollbar on main container to prevent layout shift */
+.container {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
 /* Progress bar width responsive adjustment */
 .list-progress-bar {
   width: 100%;
