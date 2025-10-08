@@ -14,9 +14,15 @@
                     <span class="text-muted">({{ list.total_tasks }} tasks, {{ list.completed_tasks }} completed)</span>
                 </div>
                 <div>
-                    <a href="{% url 'add_task_to_list' list.id %}" class="btn btn-sm btn-success me-2">Add Task</a>
-                    <a href="{% url 'edit_list' list.id %}" class="btn btn-sm btn-secondary">Edit</a>
-                    <a href="{% url 'delete_list' list.id %}" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="{% url 'add_task_to_list' list.id %}" class="add-icon-link" title="Add Task">
+                        <i class="bi bi-plus-circle-fill"></i>
+                    </a>
+                    <a href="{% url 'edit_list' list.id %}" class="edit-icon-link" title="Edit List">
+                        <i class="bi bi-pencil-fill ms-1"></i>
+                    </a>
+                    <a href="{% url 'delete_list' list.id %}" class="delete-icon-link" title="Delete List">
+                        <i class="bi bi-trash-fill"></i>
+                    </a>
                 </div>
             </div>
             <ul class="list-group mt-2">

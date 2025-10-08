@@ -1,3 +1,20 @@
+/* Add icon styles */
+.add-icon-link {
+  background: none !important;
+  border: none !important;
+  padding: 0.25rem 0.5rem;
+  box-shadow: none !important;
+}
+.add-icon-link .bi-plus-circle-fill {
+  color: #16a34a;
+  font-size: 1.2em;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+.add-icon-link:hover .bi-plus-circle-fill {
+  color: #15803d;
+}
+/* Delete icon styles */
 .delete-icon-link {
   background: none !important;
   border: none !important;
@@ -24,6 +41,12 @@
   color: #22223b;
   font-size: 1.2em;
   vertical-align: middle;
+}
+/* Remove underline from icon links */
+.add-icon-link,
+.edit-icon-link,
+.delete-icon-link {
+  text-decoration: none !important;
 }
 
 :root {
@@ -115,3 +138,5 @@ h1, h2, h3 {
   text-decoration: line-through;
   color: var(--text-secondary);
 }
+
+
