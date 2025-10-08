@@ -31,7 +31,9 @@
                         <span class="{% if task.completed %}task-completed{% endif %}">{{ task.title }}</span>
                     </form>
                     <span>
-                        <a href="{% url 'edit_task' task.id %}" class="btn btn-sm btn-secondary">Edit</a>
+                        <a href="{% url 'edit_task' task.id %}" class="edit-icon-link" title="Edit">
+                            <i class="bi bi-pencil-fill ms-1"></i>
+                        </a>
                         <a href="{% url 'delete_task' task.id %}" class="btn btn-sm btn-danger">Delete</a>
                     </span>
                 </li>

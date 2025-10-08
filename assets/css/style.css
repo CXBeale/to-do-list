@@ -1,3 +1,15 @@
+/* Edit icon styles */
+.edit-icon-link {
+  background: none !important;
+  border: none !important;
+  padding: 0.25rem 0.5rem;
+  box-shadow: none !important;
+}
+.edit-icon-link .bi-pencil-fill {
+  color: #22223b;
+  font-size: 1.2em;
+  vertical-align: middle;
+}
 
 :root {
   --bg-main: #f8fafc;
