@@ -1,34 +1,57 @@
-/* Custom Navbar Styling */
-.navbar {
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  background: #f8fafc !important;
+
+:root {
+  --bg-main: #f8fafc;
+  --bg-card: #fff;
+  --accent-blue: #a5d8ff;
+  --accent-green: #b2f2bb;
+  --accent-orange: #ffd6a5;
+  --accent-yellow: #fff3bf;
+  --accent-red: #ffadad;
+  --text-main: #22223b;
+  --text-secondary: #666;
 }
+
+body {
+  background: var(--bg-main);
+  color: var(--text-main);
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+h1, h2, h3 {
+  font-family: 'Nunito', Arial, sans-serif;
+}
+
+.container, .card, .task, .landing-container {
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(165, 216, 255, 0.08);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.header, .navbar {
+  background: var(--accent-blue) !important;
+  color: var(--text-main);
+  border-radius: 12px 12px 0 0;
+  padding: 1rem 1.5rem;
+  margin-bottom: 2rem;
+}
+
 .navbar-brand {
   font-weight: bold;
   letter-spacing: 1px;
-  color: #2563eb !important;
+  color: var(--text-main) !important;
 }
 .navbar .btn {
   margin-left: 0.5rem;
 }
 
-/* Landing/Homepage Styles */
-.landing-container {
-  max-width: 500px;
-  margin: 60px auto;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
-  padding: 2.5rem 2rem;
-  text-align: center;
-}
 .landing-title {
   font-size: 2.2rem;
   margin-bottom: 0.5rem;
-  color: #333;
+  color: var(--text-main);
 }
 .landing-desc {
-  color: #666;
+  color: var(--text-secondary);
   margin-bottom: 2rem;
 }
 .cta-btn {
@@ -39,23 +62,29 @@
   font-size: 1.1rem;
   border: none;
   border-radius: 6px;
-  background: #4f8cff;
-  color: #fff;
+  background: var(--accent-blue);
+  color: var(--text-main);
   text-decoration: none;
   transition: background 0.2s;
 }
 .cta-btn:hover {
-  background: #2563eb;
+  background: var(--accent-green);
 }
 .cta-btn.secondary {
-  background: #e0e7ef;
-  color: #2563eb;
+  background: var(--accent-orange);
+  color: var(--text-main);
 }
 .cta-btn.secondary:hover {
-  background: #c7d2fe;
+  background: var(--accent-yellow);
 }
 .or-divider {
   margin: 1.2rem 0;
-  color: #aaa;
+  color: var(--text-secondary);
   font-size: 0.95rem;
+}
+
+/* Task complete line through */
+.task-completed {
+  text-decoration: line-through;
+  color: var(--text-secondary);
 }
