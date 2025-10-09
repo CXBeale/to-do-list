@@ -6,6 +6,7 @@
   :root {
   /* Light Pastel Calm Palette */
   --color-primary: #A7C7E7; /* Soft Sky Blue */
+  --color-primary-accent: #6B9AC4; /* Muted Sky Blue */
   --color-secondary: #B8E0D2; /* Mint Green */
   --color-background: #F9FAF9; /* Off-White */
   --color-text: #2E2E2E; /* Charcoal Gray */
@@ -79,21 +80,33 @@
     color: var(--color-text);
     border: none;
   }
-  .navbar .btn-outline-secondary {
+  .navbar .btn-outline-primary {
     background: var(--color-background);
-    color: var(--color-primary);
-    border: 1.5px solid var(--color-primary);
-    font-weight: bold;
+    color: var(--color-text);
+    border: 1.5px solid var(--color-text);
     transition: background 0.2s, color 0.2s;
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.10);
   }
-  .navbar .btn-outline-secondary:hover {
-    background: var(--color-primary);
+
+  .navbar .btn-outline-primary:hover {
+    background: var(--color-primary-accent);
     color: var(--color-background);
+    border: 1.5px solid var(--color-background);
+    box-shadow: none;
   }
   .navbar .btn-outline-danger {
     background: transparent;
-    color: var(--color-error);
-    border: 1px solid var(--color-error);
+    color: var(--color-background);
+    border: 1px solid var(--color-background);
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.10);
+  }
+
+  .navbar .btn-outline-danger:hover {
+    background: var(--color-error);
+    color: var(--color-background);
+    border: 1px solid var(--color-background);
+    box-shadow: none;
   }
 
   /* ========================= */
