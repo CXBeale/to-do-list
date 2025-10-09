@@ -133,9 +133,23 @@ body {
   margin-top: 2rem;
   box-shadow: 0 -4px 16px 0 rgba(0,0,0,0.10), 0 -1.5px 4px 0 rgba(0,0,0,0.08);
 }
-.footer .heart-accent {
-  color: var(--color-accent);
+/* Home Page Styles */
+
+/* Login Page Styles */
+.login-container {
+  margin-top: 60px;
+  margin-bottom: 60px;
+  padding: 30px 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
+
+
+
+
+
+
 
   /* ========================= */
   /*        LIST GROUPS       */
@@ -207,7 +221,7 @@ body {
   }
 
   /* ========================= */
-  /*        LANDING PAGE      */
+  /*        LANDING PAGE       */
   /* ========================= */
   .landing-title {
     font-size: 2.2rem;
