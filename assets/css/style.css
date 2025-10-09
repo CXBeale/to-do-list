@@ -1,25 +1,30 @@
   /* ========================= */
   /*        VARIABLES         */
   /* ========================= */
+  /* Monochromatic color palette */
+  /* Monochromatic color palette */
   :root {
-    --bg-main: #f8fafc;
-    --bg-card: #fff;
-    --accent-blue: #a5d8ff;
-    --accent-green: #b2f2bb;
-    --accent-orange: #ffd6a5;
-    --accent-yellow: #fff3bf;
-    --accent-yellow-dark: #ffe066;
-    --accent-red: #ffadad;
-    --text-main: #22223b;
-    --text-secondary: #666;
-    /* Icon color variables */
-    --icon-green: #16a34a;
-    --icon-green-hover: #15803d;
-    --icon-red: #e3342f;
-    --icon-red-hover: #b91c1c;
-    --icon-dark: #22223b;
-  }
-  
+  /* Light Pastel Calm Palette */
+  --color-primary: #A7C7E7; /* Soft Sky Blue */
+  --color-secondary: #B8E0D2; /* Mint Green */
+  --color-background: #F9FAF9; /* Off-White */
+  --color-text: #2E2E2E; /* Charcoal Gray */
+  --color-accent: #F5B7B1; /* Light Coral */
+  --color-success: #C9E4C5; /* Pale Green */
+  --color-error: #F7C6C7; /* Soft Red-Pink */
+}
+
+[data-theme="dark"] {
+  /* Dark Pastel Calm Palette */
+  --color-primary: #6B9AC4; /* Muted Sky Blue */
+  --color-secondary: #7DB8A2; /* Deep Mint */
+  --color-background: #1E1E1E; /* Charcoal Base */
+  --color-text: #F5F5F5; /* Light Gray Text */
+  --color-accent: #D88C8A; /* Soft Coral */
+  --color-success: #90C9A7; /* Calming Green */
+  --color-error: #D79CA3; /* Muted Rose */
+}
+
   /* ========================= */
   /*   GLOBAL RESETS & BASE    */
   /* ========================= */
@@ -29,8 +34,8 @@
   }
 
   body {
-    background: var(--bg-main);
-    color: var(--text-main);
+    background: var(--color-background);
+    color: var(--color-text);
     font-family: 'Open Sans', Arial, sans-serif;
   }
   h1, h2, h3 {
@@ -41,7 +46,7 @@
   /*      LAYOUT & CARDS      */
   /* ========================= */
   .container, .card, .task, .landing-container {
-    background: var(--bg-card);
+    background: var(--color-background);
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(165, 216, 255, 0.08);
     padding: 1.5rem;
@@ -52,19 +57,43 @@
   /*        NAVIGATION        */
   /* ========================= */
   .header, .navbar {
-    background: var(--accent-blue) !important;
-    color: var(--text-main);
-    border-radius: 12px 12px 0 0;
-    padding: 1rem 1.5rem;
-    margin-bottom: 2rem;
-  }
+      background: var(--color-primary) !important;
+      color: var(--color-text);
+      border-radius: 0;
+      padding: 1rem 1.5rem;
+      margin-bottom: 2rem;
+    }
   .navbar-brand {
     font-weight: bold;
     letter-spacing: 1px;
-    color: var(--text-main) !important;
+    color: var(--color-text) !important;
   }
   .navbar .btn {
     margin-left: 0.5rem;
+    color: var(--color-text);
+    background: var(--color-secondary);
+    border: none;
+  }
+  .navbar .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-text);
+    border: none;
+  }
+  .navbar .btn-outline-secondary {
+    background: var(--color-background);
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
+    font-weight: bold;
+    transition: background 0.2s, color 0.2s;
+  }
+  .navbar .btn-outline-secondary:hover {
+    background: var(--color-primary);
+    color: var(--color-background);
+  }
+  .navbar .btn-outline-danger {
+    background: transparent;
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
   }
 
   /* ========================= */
@@ -72,13 +101,13 @@
   /* ========================= */
   /* Style for nested list groups */
   .list-group-item {
-    background: var(--accent-yellow-dark) !important;
-    color: var(--text-main) !important;
+    background: var(--color-secondary) !important;
+    color: var(--color-text) !important;
   }
   /* Style for list items */
   .list-item {
-    background: var(--accent-yellow) !important;
-    color: var(--text-main) !important;
+    background: var(--color-success) !important;
+    color: var(--color-text) !important;
   }
   /* Prevent long task titles from overflowing the list item */
   .list-item .task-completed,
@@ -93,7 +122,7 @@
   /* Task complete line through */
   .task-completed {
     text-decoration: line-through;
-    color: var(--text-secondary);
+    color: var(--color-accent);
   }
 
   /* ========================= */
@@ -111,27 +140,27 @@
   }
   /* Add icon  */
   .add-icon-link .bi-plus-circle-fill {
-    color: var(--icon-green, #16a34a);
+    color: var(--color-success);
     font-size: 1.2em;
     vertical-align: middle;
     transition: color 0.2s;
   }
   .add-icon-link:hover .bi-plus-circle-fill {
-    color: var(--icon-green-hover, #15803d);
+    color: var(--color-primary);
   }
   /* Delete icon */
   .delete-icon-link .bi-trash-fill {
-    color: var(--icon-red, #e3342f);
+    color: var(--color-error);
     font-size: 1.2em;
     vertical-align: middle;
     transition: color 0.2s;
   }
   .delete-icon-link:hover .bi-trash-fill {
-    color: var(--icon-red-hover, #b91c1c);
+    color: var(--color-accent);
   }
   /* Edit icon */
   .edit-icon-link .bi-pencil-fill {
-    color: var(--icon-dark, #22223b);
+    color: var(--color-primary);
     font-size: 1.2em;
     vertical-align: middle;
   }
@@ -142,10 +171,10 @@
   .landing-title {
     font-size: 2.2rem;
     margin-bottom: 0.5rem;
-    color: var(--text-main);
+    color: var(--color-primary);
   }
   .landing-desc {
-    color: var(--text-secondary);
+    color: var(--color-secondary);
     margin-bottom: 2rem;
   }
   .cta-btn {
@@ -156,24 +185,24 @@
     font-size: 1.1rem;
     border: none;
     border-radius: 6px;
-    background: var(--accent-blue);
-    color: var(--text-main);
+    background: var(--color-primary);
+    color: var(--color-text);
     text-decoration: none;
     transition: background 0.2s;
   }
   .cta-btn:hover {
-    background: var(--accent-green);
+    background: var(--color-accent);
   }
   .cta-btn.secondary {
-    background: var(--accent-orange);
-    color: var(--text-main);
+    background: var(--color-accent);
+    color: var(--color-text);
   }
   .cta-btn.secondary:hover {
-    background: var(--accent-yellow);
+    background: var(--color-success);
   }
   .or-divider {
     margin: 1.2rem 0;
-    color: var(--text-secondary);
+    color: var(--color-secondary);
     font-size: 0.95rem;
   }
 
@@ -183,6 +212,7 @@
   /* Progress bar width responsive adjustment */
   .list-progress-bar {
     width: 100%;
+    background: var(--color-secondary);
   }
 
   /* ========================= */
@@ -194,5 +224,5 @@
     }
   }
 
-  
+
 
