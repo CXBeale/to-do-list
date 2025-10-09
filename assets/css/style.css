@@ -135,7 +135,7 @@ body {
   /* ========================= */
   
   .landing-container {
-      background: #fff;
+      background: var(--color-secondary);
       border-radius: 14px;
       box-shadow: 0 6px 32px 0 rgba(80, 120, 180, 0.13), 0 1.5px 8px 0 rgba(0,0,0,0.10);
       border: 1.5px solid var(--color-primary-accent);
@@ -148,10 +148,11 @@ body {
   .landing-title {
     font-size: 2.2rem;
     margin-bottom: 0.5rem;
-    color: var(--color-primary);
+    color: var(--color-primary-accent);
+    font-family: 'Nunito', Arial, sans-serif;
   }
   .landing-desc {
-    color: var(--color-secondary);
+    color: var(--color-primary-accent);
     margin-bottom: 2rem;
   }
   .cta-btn {
@@ -160,15 +161,17 @@ body {
     margin: 0.5rem 0;
     padding: 0.9rem;
     font-size: 1.1rem;
-    border: var(--color-text);
+    border: 1px solid var(--color-text);
     border-radius: 6px;
-    background: var(--color-primary);
+    background: var(--color-background);
     color: var(--color-text);
     text-decoration: none;
     transition: background 0.2s;
   }
   .cta-btn:hover {
     background: var(--color-success);
+    border: 1px solid var(--color-text);
+    border-radius: 6px;
   }
   .cta-btn.secondary {
     background: var(--color-accent);
@@ -179,7 +182,7 @@ body {
   }
   .or-divider {
     margin: 1.2rem 0;
-    color: var(--color-secondary);
+    color: var(--color-primary-accent);
     font-size: 0.95rem;
   }
 
