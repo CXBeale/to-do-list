@@ -7,7 +7,7 @@
         {% if user.is_authenticated %}
             <a href="{% url 'list_overview' %}" class="cta-btn">Go to My Tasks</a>
         {% else %}
-            <a href="{% url 'account_login' %}" class="cta-btn">Sign In</a>
+            <a href="{% url 'account_login' %}" class="cta-btn btn">Sign In</a>
             <div class="or-divider">or</div>
             <a href="{% url 'account_signup' %}" class="cta-btn secondary">Sign Up</a>
         {% endif %}
