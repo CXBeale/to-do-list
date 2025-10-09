@@ -1,180 +1,198 @@
-/* Always show vertical scrollbar on main container to prevent layout shift */
-.container {
-  overflow-y: scroll;
-  scrollbar-gutter: stable;
-}
-/* Progress bar width responsive adjustment */
-.list-progress-bar {
-  width: 100%;
-}
-
-@media (min-width: 768px) {
-  .list-progress-bar {
-    width: 50%;
+  /* ========================= */
+  /*        VARIABLES         */
+  /* ========================= */
+  :root {
+    --bg-main: #f8fafc;
+    --bg-card: #fff;
+    --accent-blue: #a5d8ff;
+    --accent-green: #b2f2bb;
+    --accent-orange: #ffd6a5;
+    --accent-yellow: #fff3bf;
+    --accent-yellow-dark: #ffe066;
+    --accent-red: #ffadad;
+    --text-main: #22223b;
+    --text-secondary: #666;
+    /* Icon color variables */
+    --icon-green: #16a34a;
+    --icon-green-hover: #15803d;
+    --icon-red: #e3342f;
+    --icon-red-hover: #b91c1c;
+    --icon-dark: #22223b;
   }
-}
-:root {
-  --bg-main: #f8fafc;
-  --bg-card: #fff;
-  --accent-blue: #a5d8ff;
-  --accent-green: #b2f2bb;
-  --accent-orange: #ffd6a5;
-  --accent-yellow: #fff3bf;
-  --accent-yellow-dark: #ffe066;
-  --accent-red: #ffadad;
-  --text-main: #22223b;
-  --text-secondary: #666;
-}
-/* Style for nested list groups */
-.list-group-item {
-  background: var(--accent-yellow-dark) !important;
-  color: var(--text-main) !important;
-}
+  
+  /* ========================= */
+  /*   GLOBAL RESETS & BASE    */
+  /* ========================= */
+  /* Global box-sizing for predictable sizing */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
 
-/* Style for list items */
-.list-item {
-  background: var(--accent-yellow) !important;
-  color: var(--text-main) !important;
-}
-/* Add icon styles */
-.add-icon-link {
-  background: none !important;
-  border: none !important;
-  padding: 0.25rem 0.5rem;
-  box-shadow: none !important;
-}
-.add-icon-link .bi-plus-circle-fill {
-  color: #16a34a;
-  font-size: 1.2em;
-  vertical-align: middle;
-  transition: color 0.2s;
-}
-.add-icon-link:hover .bi-plus-circle-fill {
-  color: #15803d;
-}
-/* Delete icon styles */
-.delete-icon-link {
-  background: none !important;
-  border: none !important;
-  padding: 0.25rem 0.5rem;
-  box-shadow: none !important;
-}
-.delete-icon-link .bi-trash-fill {
-  color: #e3342f;
-  font-size: 1.2em;
-  vertical-align: middle;
-  transition: color 0.2s;
-}
-.delete-icon-link:hover .bi-trash-fill {
-  color: #b91c1c;
-}
-/* Edit icon styles */
-.edit-icon-link {
-  background: none !important;
-  border: none !important;
-  padding: 0.25rem 0.5rem;
-  box-shadow: none !important;
-}
-.edit-icon-link .bi-pencil-fill {
-  color: #22223b;
-  font-size: 1.2em;
-  vertical-align: middle;
-}
-/* Remove underline from icon links */
-.add-icon-link,
-.edit-icon-link,
-.delete-icon-link {
-  text-decoration: none !important;
-}
+  body {
+    background: var(--bg-main);
+    color: var(--text-main);
+    font-family: 'Open Sans', Arial, sans-serif;
+  }
+  h1, h2, h3 {
+    font-family: 'Nunito', Arial, sans-serif;
+  }
 
-:root {
-  --bg-main: #f8fafc;
-  --bg-card: #fff;
-  --accent-blue: #a5d8ff;
-  --accent-green: #b2f2bb;
-  --accent-orange: #ffd6a5;
-  --accent-yellow: #fff3bf;
-  --accent-red: #ffadad;
-  --text-main: #22223b;
-  --text-secondary: #666;
-}
+  /* ========================= */
+  /*      LAYOUT & CARDS      */
+  /* ========================= */
+  .container, .card, .task, .landing-container {
+    background: var(--bg-card);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(165, 216, 255, 0.08);
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
 
-body {
-  background: var(--bg-main);
-  color: var(--text-main);
-  font-family: 'Open Sans', Arial, sans-serif;
-}
-h1, h2, h3 {
-  font-family: 'Nunito', Arial, sans-serif;
-}
+  /* ========================= */
+  /*        NAVIGATION        */
+  /* ========================= */
+  .header, .navbar {
+    background: var(--accent-blue) !important;
+    color: var(--text-main);
+    border-radius: 12px 12px 0 0;
+    padding: 1rem 1.5rem;
+    margin-bottom: 2rem;
+  }
+  .navbar-brand {
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--text-main) !important;
+  }
+  .navbar .btn {
+    margin-left: 0.5rem;
+  }
 
-.container, .card, .task, .landing-container {
-  background: var(--bg-card);
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(165, 216, 255, 0.08);
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-}
+  /* ========================= */
+  /*        LIST GROUPS       */
+  /* ========================= */
+  /* Style for nested list groups */
+  .list-group-item {
+    background: var(--accent-yellow-dark) !important;
+    color: var(--text-main) !important;
+  }
+  /* Style for list items */
+  .list-item {
+    background: var(--accent-yellow) !important;
+    color: var(--text-main) !important;
+  }
+  /* Prevent long task titles from overflowing the list item */
+  .list-item .task-completed,
+  .list-item span:not(.task-completed) {
+    word-break: break-word;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    max-width: clamp(200px, 60vw, 500px);
+    display: inline-block;
+    vertical-align: middle;
+  }
+  /* Task complete line through */
+  .task-completed {
+    text-decoration: line-through;
+    color: var(--text-secondary);
+  }
 
-.header, .navbar {
-  background: var(--accent-blue) !important;
-  color: var(--text-main);
-  border-radius: 12px 12px 0 0;
-  padding: 1rem 1.5rem;
-  margin-bottom: 2rem;
-}
+  /* ========================= */
+  /*        ICON LINKS        */
+  /* ========================= */
+  /* Shared icon link styles */
+  .add-icon-link,
+  .edit-icon-link,
+  .delete-icon-link {
+    background: none !important;
+    border: none !important;
+    padding: 0.25rem 0.5rem;
+    box-shadow: none !important;
+    text-decoration: none !important;
+  }
+  /* Add icon  */
+  .add-icon-link .bi-plus-circle-fill {
+    color: var(--icon-green, #16a34a);
+    font-size: 1.2em;
+    vertical-align: middle;
+    transition: color 0.2s;
+  }
+  .add-icon-link:hover .bi-plus-circle-fill {
+    color: var(--icon-green-hover, #15803d);
+  }
+  /* Delete icon */
+  .delete-icon-link .bi-trash-fill {
+    color: var(--icon-red, #e3342f);
+    font-size: 1.2em;
+    vertical-align: middle;
+    transition: color 0.2s;
+  }
+  .delete-icon-link:hover .bi-trash-fill {
+    color: var(--icon-red-hover, #b91c1c);
+  }
+  /* Edit icon */
+  .edit-icon-link .bi-pencil-fill {
+    color: var(--icon-dark, #22223b);
+    font-size: 1.2em;
+    vertical-align: middle;
+  }
 
-.navbar-brand {
-  font-weight: bold;
-  letter-spacing: 1px;
-  color: var(--text-main) !important;
-}
-.navbar .btn {
-  margin-left: 0.5rem;
-}
+  /* ========================= */
+  /*        LANDING PAGE      */
+  /* ========================= */
+  .landing-title {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+  }
+  .landing-desc {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+  }
+  .cta-btn {
+    display: block;
+    width: 100%;
+    margin: 0.5rem 0;
+    padding: 0.9rem;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 6px;
+    background: var(--accent-blue);
+    color: var(--text-main);
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover {
+    background: var(--accent-green);
+  }
+  .cta-btn.secondary {
+    background: var(--accent-orange);
+    color: var(--text-main);
+  }
+  .cta-btn.secondary:hover {
+    background: var(--accent-yellow);
+  }
+  .or-divider {
+    margin: 1.2rem 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+  }
 
-.landing-title {
-  font-size: 2.2rem;
-  margin-bottom: 0.5rem;
-  color: var(--text-main);
-}
-.landing-desc {
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
-}
-.cta-btn {
-  display: block;
-  width: 100%;
-  margin: 0.5rem 0;
-  padding: 0.9rem;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 6px;
-  background: var(--accent-blue);
-  color: var(--text-main);
-  text-decoration: none;
-  transition: background 0.2s;
-}
-.cta-btn:hover {
-  background: var(--accent-green);
-}
-.cta-btn.secondary {
-  background: var(--accent-orange);
-  color: var(--text-main);
-}
-.cta-btn.secondary:hover {
-  background: var(--accent-yellow);
-}
-.or-divider {
-  margin: 1.2rem 0;
-  color: var(--text-secondary);
-  font-size: 0.95rem;
-}
+  /* ========================= */
+  /*      PROGRESS BAR        */
+  /* ========================= */
+  /* Progress bar width responsive adjustment */
+  .list-progress-bar {
+    width: 100%;
+  }
 
-/* Task complete line through */
-.task-completed {
-  text-decoration: line-through;
-  color: var(--text-secondary);
-}
+  /* ========================= */
+  /*      MEDIA QUERIES        */
+  /* ========================= */
+  @media (min-width: 768px) {
+    .list-progress-bar {
+      width: 50%;
+    }
+  }
 
+  
 
