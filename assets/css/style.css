@@ -104,7 +104,7 @@ body {
     box-shadow: none;
   }
   .navbar .btn-danger {
-    background: var(--color-primary-accent);
+    background: var(--color-error);
     color: var(--color-background);
     border: 1px solid var(--color-background);
     transition: background 0.2s, color 0.2s;
@@ -112,7 +112,7 @@ body {
   }
 
   .navbar .btn-danger:hover {
-    background: var(--color-error);
+    background: var(--color-primary-accent);
     color: var(--color-background);
     border: 1px solid var(--color-background);
     box-shadow: none;
@@ -217,8 +217,8 @@ body {
 /*         TASK PAGE         */
 /* ========================= */
 
-.task-page-container {
-  background: var(--color-background);
+.task-container {
+  background: var(--color-secondary);
   border-radius: 14px;
   box-shadow: 0 6px 32px 0 rgba(80, 120, 180, 0.13), 0 1.5px 8px 0 rgba(0,0,0,0.10);
   border: 1.5px solid var(--color-primary-accent);
@@ -247,17 +247,18 @@ body {
 }
 
 .task-actions {
-  margin-top: 1.5rem;
+  
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  gap: 0.2rem; /* space between icons */
   justify-content: flex-end;
+  margin-left: 1rem;
 }
 
 .add-task-btn {
-  background: var(--color-success);
+  background: var(--color-primary);
   color: var(--color-text);
   border: 1.5px solid var(--color-success);
-  font-weight: 600;
   letter-spacing: 0.5px;
   box-shadow: 0 4px 16px 0 rgba(80, 180, 120, 0.10), 0 1.5px 4px 0 rgba(0,0,0,0.08);
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
@@ -285,7 +286,7 @@ body {
   }
   /* Add icon  */
   .add-icon-link .bi-plus-circle-fill {
-    color: var(--color-success);
+    color: var(--color-primary-accent);
     font-size: 1.2em;
     vertical-align: middle;
     transition: color 0.2s;
@@ -295,19 +296,24 @@ body {
   }
   /* Delete icon */
   .delete-icon-link .bi-trash-fill {
-    color: var(--color-error);
+    color: var(--color-accent);
     font-size: 1.2em;
     vertical-align: middle;
     transition: color 0.2s;
   }
   .delete-icon-link:hover .bi-trash-fill {
-    color: var(--color-accent);
+    color: var(--color-error);
   }
   /* Edit icon */
   .edit-icon-link .bi-pencil-fill {
-    color: var(--color-primary);
+    color: var(--color-primary-accent);
     font-size: 1.2em;
     vertical-align: middle;
+  }
+  .edit-icon-link:hover .bi-pencil-fill {
+    color: var(--color-primary) !important;
+    text-shadow: 0 2px 8px rgba(107,154,196,0.12);
+    transition: color 0.2s, text-shadow 0.2s;
   }
 
   /* ========================= */
@@ -334,15 +340,27 @@ body {
   /* ========================= */
   /*        LIST GROUPS       */
   /* ========================= */
-  /* Style for nested list groups */
+  /* Style for each list group */
   .list-group-item {
-    background: var(--color-secondary) !important;
+    background: var(--color-background) !important;
     color: var(--color-text) !important;
+    border: solid 1px var(--color-primary);
+    border-radius: 8px;         /* Rounded edges */
+    box-shadow: 0 4px 16px 0 rgba(80, 180, 120, 0.10), 0 1.5px 4px 0 rgba(0,0,0,0.08);
+    
   }
   /* Style for list items */
   .list-item {
-    background: var(--color-success) !important;
+    background: var(--color-background) !important;
     color: var(--color-text) !important;
+    border-radius: 8px;         /* Rounded edges */
+    margin-bottom: 0.5rem;      /* Space below each task */
+    border: 1px solid #e3e8ef;  /* Optional: subtle border for definition */
+    box-shadow: 0 2px 8px rgba(80,120,180,0.10), 0 1.5px 4px rgba(0,0,0,0.08); /* More visible shadow */
+    transition: background 0.2s, box-shadow 0.2s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   /* Prevent long task titles from overflowing the list item */
   .list-item .task-completed,
@@ -354,12 +372,110 @@ body {
     display: inline-block;
     vertical-align: middle;
   }
-  /* Task complete line through */
-  .task-completed {
-    text-decoration: line-through;
-    color: var(--color-text);
+
+  .list-item.task-completed {
+    background: var(--color-success) !important;
+    color: var(--color-text) !important;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;      /* Space below each task */
+    border: 1px solid #e3e8ef;  /* Optional: subtle border for definition */
+    box-shadow: 0 2px 8px rgba(80,120,180,0.10), 0 1.5px 4px rgba(0,0,0,0.08); /* More visible shadow */
   }
 
+
+
+/* Style the chevron icon button */
+.chevron-toggle .bi-chevron-down {
+  color: var(--color-primary-accent);
+  font-size: 1.3em;
+  transition: transform 0.3s, color 0.2s;
+  vertical-align: middle;
+}
+
+/* Optional: hover effect */
+.chevron-toggle:hover .bi-chevron-down {
+  color: var(--color-primary);
+}
+
+/* Make the form and icons flex children */
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Make the form grow to fill space, but not overflow */
+.list-item form {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* Constrain the task text so it wraps but doesn't push icons */
+.task-title-text {
+  flex: 1 1 0;
+  min-width: 0;
+  max-width: 100%;
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  display: block;
+}
+
+/* Keep icons together and prevent shrinking */
+.task-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+
+/* Style the task toggle checkbox */
+/* Hide the native checkbox */
+.form-check-input {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 1.2em;
+  height: 1.2em;
+  border-radius: 4px;
+  border: 2px solid var(--color-accent);
+  background: #fff;
+  margin-right: 0.75rem;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 1px 4px rgba(80,120,180,0.06);
+  position: relative;
+  cursor: pointer;
+}
+
+/* Show a custom tick when checked */
+.form-check-input:checked {
+  background-color: var(--color-background);
+  border-color: var(--color-accent);
+  
+}
+
+.form-check-input:checked::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0.32em;
+  top: 0.08em;
+  width: 0.3em;
+  height: 0.6em;
+  border: solid var(--color-accent);
+  border-width: 0 0.18em 0.18em 0;
+  transform: rotate(45deg);
+  box-shadow: 0 1px 4px rgba(80,120,180,0.06);
+}
+
+/* Focus state */
+.form-check-input:focus {
+  outline: none;
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 2px rgba(247,198,199,0.25);
+}
 
 
 
