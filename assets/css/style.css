@@ -198,43 +198,80 @@ body {
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
 
+.main-btn-primary {
+  background: var(--color-background);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-text);
+  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.10);
+}
+.main-btn-primary:hover {
+  background: var(--color-primary-accent);
+  color: var(--color-background);
+  border: 1.5px solid var(--color-background);
+  box-shadow: none;
+}
 
+  
+/* ========================= */
+/*         TASK PAGE         */
+/* ========================= */
 
+.task-page-container {
+  background: var(--color-background);
+  border-radius: 14px;
+  box-shadow: 0 6px 32px 0 rgba(80, 120, 180, 0.13), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+  border: 1.5px solid var(--color-primary-accent);
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin: 2.5rem auto 2.5rem auto;
+  max-width: 600px;
+}
 
+.task-title {
+  font-size: 1.5rem;
+  font-family: 'Nunito', Arial, sans-serif;
+  color: var(--color-primary-accent);
+  margin-bottom: 1rem;
+}
 
+.task-desc {
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+}
 
+.task-meta {
+  font-size: 0.95rem;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
 
-  /* ========================= */
-  /*        LIST GROUPS       */
-  /* ========================= */
-  /* Style for nested list groups */
-  .list-group-item {
-    background: var(--color-secondary) !important;
-    color: var(--color-text) !important;
-  }
-  /* Style for list items */
-  .list-item {
-    background: var(--color-success) !important;
-    color: var(--color-text) !important;
-  }
-  /* Prevent long task titles from overflowing the list item */
-  .list-item .task-completed,
-  .list-item span:not(.task-completed) {
-    word-break: break-word;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    max-width: clamp(200px, 60vw, 500px);
-    display: inline-block;
-    vertical-align: middle;
-  }
-  /* Task complete line through */
-  .task-completed {
-    text-decoration: line-through;
-    color: var(--color-accent);
-  }
+.task-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
 
-  /* ========================= */
-  /*        ICON LINKS        */
+.add-task-btn {
+  background: var(--color-success);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-success);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 16px 0 rgba(80, 180, 120, 0.10), 0 1.5px 4px 0 rgba(0,0,0,0.08);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.add-task-btn:hover {
+  background: var(--color-primary-accent);
+  color: var(--color-background);
+  border: 1.5px solid var(--color-primary-accent);
+  box-shadow: none;
+}
+
+/* ========================= */
+  /*       TASK ICONS          */
   /* ========================= */
   /* Shared icon link styles */
   .add-icon-link,
@@ -273,15 +310,58 @@ body {
     vertical-align: middle;
   }
 
-
   /* ========================= */
   /*      PROGRESS BAR        */
   /* ========================= */
-  /* Progress bar width responsive adjustment */
-  .list-progress-bar {
-    width: 100%;
-    background: var(--color-secondary);
+
+  /* Style the progress bar container (incomplete area) */
+.list-progress-bar {
+  background-color: #fff !important;      /* White background for incomplete area */
+  width: 100%;
+  border: 1px solid var(--color-text);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 16px;
+}
+
+/* Style the completed portion of the bar */
+.progress-bar.bg-success {
+  background-color: var(--color-success) !important; /* Use your theme's green */
+  transition: width 1s;
+  border-radius: 8px 0 0 8px;
+}
+  
+  /* ========================= */
+  /*        LIST GROUPS       */
+  /* ========================= */
+  /* Style for nested list groups */
+  .list-group-item {
+    background: var(--color-secondary) !important;
+    color: var(--color-text) !important;
   }
+  /* Style for list items */
+  .list-item {
+    background: var(--color-success) !important;
+    color: var(--color-text) !important;
+  }
+  /* Prevent long task titles from overflowing the list item */
+  .list-item .task-completed,
+  .list-item span:not(.task-completed) {
+    word-break: break-word;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    max-width: clamp(200px, 60vw, 500px);
+    display: inline-block;
+    vertical-align: middle;
+  }
+  /* Task complete line through */
+  .task-completed {
+    text-decoration: line-through;
+    color: var(--color-text);
+  }
+
+
+
 
   /* ========================= */
   /*      MEDIA QUERIES        */
@@ -291,6 +371,3 @@ body {
       width: 50%;
     }
   }
-
-
-

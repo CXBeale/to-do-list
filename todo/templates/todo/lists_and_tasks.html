@@ -3,8 +3,8 @@
 {% block content %}
 <div class="container mt-4">
     <h2>My Tasks</h2>
-    <a href="{% url 'create_list' %}" class="btn btn-primary mb-3">Create New List</a>
-    <a href="{% url 'add_task' %}" class="btn btn-success mb-3 ms-2">Add Task</a>
+    <a href="{% url 'create_list' %}" class="btn btn-primary main-btn-primary mb-3">New List</a>
+    <a href="{% url 'add_task' %}" class="btn add-task-btn mb-3 ms-2">Add Task</a>
     <ul class="list-group mb-4">
         {% for list in lists %}
         <li class="list-group-item">
@@ -29,14 +29,16 @@
                     </div>
                     {% if list.total_tasks > 0 %}
                         {% widthratio list.completed_tasks list.total_tasks 100 as percent %}
-                        <div class="progress list-progress-bar mb-2 mt-2" style="height: 16px; width: 100%;">
-                            <div class="progress-bar bg-success" role="progressbar"
-                                 style="width: {{ percent }}%;"
-                                 aria-valuenow="{{ list.completed_tasks }}"
-                                 aria-valuemin="0"
-                                 aria-valuemax="{{ list.total_tasks }}">
-                                {{ list.completed_tasks }}/{{ list.total_tasks }}
-                            </div>
+                        <div class="progress list-progress-bar mb-2 mt-2">
+                            {% if list.completed_tasks > 0 %}
+                                <div class="progress-bar bg-success"
+                                     role="progressbar"
+                                     style="width: {{ percent }}%;"
+                                     aria-valuenow="{{ list.completed_tasks }}"
+                                     aria-valuemin="0"
+                                     aria-valuemax="{{ list.total_tasks }}">
+                                </div>
+                            {% endif %}
                         </div>
                     {% endif %}
                     <div class="collapse show" id="tasks-list-{{ list.id }}">
