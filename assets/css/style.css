@@ -11,6 +11,8 @@
   --color-accent: #F5B7B1;
   --color-success: #C9E4C5;
   --color-error: #F7C6C7;
+  /* Shadow for containers and buttons */
+  --box-shadow-main: 0 4px 16px 0 rgba(0,0,0,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.10);
 }
 [data-theme="dark"] {
   --color-primary: #6B9AC4;
@@ -50,7 +52,7 @@ h1, h2, h3 {
   flex: 1 0 auto;
   background: var(--color-background);
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(165, 216, 255, 0.08);
+  box-shadow: var(--box-shadow-main);
   padding: 1.5rem;
   margin-bottom: 1.5rem;
 }
@@ -64,7 +66,7 @@ h1, h2, h3 {
   border-radius: 0;
   padding: 1rem 1.5rem;
   margin-bottom: 2rem;
-  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.10), 0 1.5px 4px 0 rgba(0,0,0,0.08);
+  box-shadow: var(--box-shadow-main);
 }
 .navbar-brand {
   font-weight: bold;
@@ -162,7 +164,7 @@ h1, h2, h3 {
   border: 1.5px solid var(--color-text);
   background: var(--color-background);
   color: var(--color-text);
-  box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.10);
+  box-shadow: var(--box-shadow-main);
   transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
   cursor: pointer;
   text-decoration: none;
