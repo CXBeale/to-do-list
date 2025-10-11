@@ -4,7 +4,7 @@
     <h1>Add a New Task</h1>
     <form method="post">
       {% csrf_token %} {{ form.as_p }}
-  <button type="submit" class="btn btn-success">Add Task</button>
-  <a href="{% url 'list_overview' %}" class="btn btn-secondary">Cancel</a>
+      <button type="submit" class="btn-custom btn-accent-custom">Add Task</button>
+      <a href="{% url 'list_overview' %}" class="btn-custom btn-primary-custom">Cancel</a>
     </form>
 {% endblock %}

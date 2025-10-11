@@ -3,8 +3,8 @@
 {% block content %}
 <div class="task-container container mt-4">
     <h2>My Tasks</h2>
-    <a href="{% url 'create_list' %}" class="btn btn-primary main-btn-primary mb-3">New List</a>
-    <a href="{% url 'add_task' %}" class="btn btn-primary main-btn-primary mb-3">Add Task</a>
+    <a href="{% url 'create_list' %}" class="btn-custom btn-primary-custom mb-3">New List</a>
+    <a href="{% url 'add_task' %}" class="btn-custom btn-primary-custom mb-3">Add Task</a>
     <ul class="list-group mb-4">
         {% for list in lists %}
         <li class="list-group-item mb-4">
@@ -12,7 +12,7 @@
                 <div class="d-flex align-items-center justify-content-between mt-1 mb-2 w-100">
                     <strong>{{ list.list_name }}</strong>
                     <div>
-                        <button class="btn btn-link p-0 me-2 chevron-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#tasks-list-{{ list.id }}" aria-expanded="true" aria-controls="tasks-list-{{ list.id }}">
+                        <button class="btn-custom btn-link p-0 me-2 chevron-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#tasks-list-{{ list.id }}" aria-expanded="true" aria-controls="tasks-list-{{ list.id }}">
                             <i class="bi bi-chevron-down"></i>
                         </button>
                         <a href="{% url 'add_task_to_list' list.id %}" class="add-icon-link" title="Add Task">
@@ -120,5 +120,4 @@ function submitTaskForm(checkbox) {
     });
 }
 </script>
-<!-- filepath: c:\Users\chris\Documents\vscode-projects\to-do-list\todo\templates\todo\lists_and_tasks.html -->
 {% endblock %}

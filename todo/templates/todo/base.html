@@ -17,13 +17,13 @@
         <a class="navbar-brand ms-3" href="{% url 'home' %}">To-Do List</a>
         <div class="ms-auto me-3">
             {% if user.is_authenticated %}
-                <a class="btn btn-primary me-2" href="{% url 'list_overview' %}">My Tasks</a>
+                <a class="btn-custom btn-primary-custom me-2" href="{% url 'list_overview' %}">My Tasks</a>
                 <form action="{% url 'account_logout' %}" method="post" style="display:inline;">
                     {% csrf_token %}
-                    <button class="btn btn-danger" type="submit">Logout</button>
+                    <button class="btn-custom btn-danger-custom" type="submit">Logout</button>
                 </form>
             {% else %}
-                <a class="btn btn-primary me-2" href="{% url 'account_login' %}">Sign In</a>
+                <a class="btn-custom btn-primary-custom me-2" href="{% url 'account_login' %}">Sign In</a>
             {% endif %}
         </div>
     </nav>

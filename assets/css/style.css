@@ -1,3 +1,30 @@
+/* ========================= */
+/*        VARIABLES          */
+/* ========================= */
+:root {
+  /* Light Pastel Calm Palette */
+  --color-primary: #A7C7E7;
+  --color-primary-accent: #6B9AC4;
+  --color-secondary: #B8E0D2;
+  --color-background: #F9FAF9;
+  --color-text: #2E2E2E;
+  --color-accent: #F5B7B1;
+  --color-success: #C9E4C5;
+  --color-error: #F7C6C7;
+}
+[data-theme="dark"] {
+  --color-primary: #6B9AC4;
+  --color-secondary: #7DB8A2;
+  --color-background: #1E1E1E;
+  --color-text: #F5F5F5;
+  --color-accent: #D88C8A;
+  --color-success: #90C9A7;
+  --color-error: #D79CA3;
+}
+
+/* ========================= */
+/*   GLOBAL RESETS & BASE    */
+/* ========================= */
 html, body {
   height: 100%;
 }
@@ -5,118 +32,45 @@ body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Open Sans', Arial, sans-serif;
 }
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+h1, h2, h3 {
+  font-family: 'Nunito', Arial, sans-serif;
+}
+
+/* ========================= */
+/*         LAYOUT            */
+/* ========================= */
 .container {
   flex: 1 0 auto;
+  background: var(--color-background);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(165, 216, 255, 0.08);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-  /* ========================= */
-  /*        VARIABLES         */
-  /* ========================= */
-  /* Monochromatic color palette */
-  /* Monochromatic color palette */
-  :root {
-  /* Light Pastel Calm Palette */
-  --color-primary: #A7C7E7; /* Soft Sky Blue */
-  --color-primary-accent: #6B9AC4; /* Muted Sky Blue */
-  --color-secondary: #B8E0D2; /* Mint Green */
-  --color-background: #F9FAF9; /* Off-White */
-  --color-text: #2E2E2E; /* Charcoal Gray */
-  --color-accent: #F5B7B1; /* Light Coral */
-  --color-success: #C9E4C5; /* Pale Green */
-  --color-error: #F7C6C7; /* Soft Red-Pink */
-}
-
-[data-theme="dark"] {
-  /* Dark Pastel Calm Palette */
-  --color-primary: #6B9AC4; /* Muted Sky Blue */
-  --color-secondary: #7DB8A2; /* Deep Mint */
-  --color-background: #1E1E1E; /* Charcoal Base */
-  --color-text: #F5F5F5; /* Light Gray Text */
-  --color-accent: #D88C8A; /* Soft Coral */
-  --color-success: #90C9A7; /* Calming Green */
-  --color-error: #D79CA3; /* Muted Rose */
-}
-
-  /* ========================= */
-  /*   GLOBAL RESETS & BASE    */
-  /* ========================= */
-  /* Global box-sizing for predictable sizing */
-  *, *::before, *::after {
-    box-sizing: border-box;
-  }
-
-  body {
-    background: var(--color-background);
-    color: var(--color-text);
-    font-family: 'Open Sans', Arial, sans-serif;
-  }
-  h1, h2, h3 {
-    font-family: 'Nunito', Arial, sans-serif;
-  }
-
-  /* ========================= */
-  /*      LAYOUT & CARDS      */
-  /* ========================= */
-  .container, .card, .task, .landing-container {
-    background: var(--color-background);
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(165, 216, 255, 0.08);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-  }
-
-  /* ========================= */
-  /*        NAVIGATION        */
-  /* ========================= */
-  .header, .navbar {
+/* ========================= */
+/*        NAVIGATION         */
+/* ========================= */
+.header, .navbar {
   background: var(--color-primary) !important;
   color: var(--color-text);
   border-radius: 0;
   padding: 1rem 1.5rem;
   margin-bottom: 2rem;
   box-shadow: 0 4px 16px 0 rgba(0,0,0,0.10), 0 1.5px 4px 0 rgba(0,0,0,0.08);
-    }
-  .navbar-brand {
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: var(--color-text) !important;
-  }
-  .navbar .btn {
-    margin-left: 0.5rem;
-    color: var(--color-text);
-    background: var(--color-secondary);
-    border: none;
-  }
-
-  .navbar .btn-primary {
-    background: var(--color-background);
-    color: var(--color-text);
-    border: 1.5px solid var(--color-text);
-    transition: background 0.2s, color 0.2s;
-    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.10);
-  }
-
-  .navbar .btn-primary:hover {
-    background: var(--color-primary-accent);
-    color: var(--color-background);
-    border: 1.5px solid var(--color-background);
-    box-shadow: none;
-  }
-  .navbar .btn-danger {
-    background: var(--color-error);
-    color: var(--color-background);
-    border: 1px solid var(--color-background);
-    transition: background 0.2s, color 0.2s;
-    box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.10);
-  }
-
-  .navbar .btn-danger:hover {
-    background: var(--color-primary-accent);
-    color: var(--color-background);
-    border: 1px solid var(--color-background);
-    box-shadow: none;
-  }
+}
+.navbar-brand {
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--color-text) !important;
+}
 
 /* ========================= */
 /*          FOOTER           */
@@ -130,65 +84,63 @@ body {
   box-shadow: 0 -4px 16px 0 rgba(0,0,0,0.10), 0 -1.5px 4px 0 rgba(0,0,0,0.08);
 }
 
-  /* ========================= */
-  /*        LANDING PAGE       */
-  /* ========================= */
-  
-  .landing-container {
-      background: var(--color-secondary);
-      border-radius: 14px;
-      box-shadow: 0 6px 32px 0 rgba(80, 120, 180, 0.13), 0 1.5px 8px 0 rgba(0,0,0,0.10);
-      border: 1.5px solid var(--color-primary-accent);
-      padding: 2.5rem 2rem 2rem 2rem;
-      margin: 2.5rem auto 2.5rem auto;
-      max-width: 480px;
-      text-align: center;
-    }
+/* ========================= */
+/*        LANDING PAGE       */
+/* ========================= */
+.landing-container {
+  background: var(--color-secondary);
+  border-radius: 14px;
+  box-shadow: 0 6px 32px 0 rgba(80, 120, 180, 0.13), 0 1.5px 8px 0 rgba(0,0,0,0.10);
+  border: 1.5px solid var(--color-primary-accent);
+  padding: 2.5rem 2rem 2rem 2rem;
+  margin: 2.5rem auto 2.5rem auto;
+  max-width: 480px;
+  text-align: center;
+}
+.landing-title {
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary-accent);
+  font-family: 'Nunito', Arial, sans-serif;
+}
+.landing-desc {
+  color: var(--color-primary-accent);
+  margin-bottom: 2rem;
+}
+.cta-btn {
+  display: block;
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.9rem;
+  font-size: 1.1rem;
+  border: 1px solid var(--color-text);
+  border-radius: 6px;
+  background: var(--color-background);
+  color: var(--color-text);
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.cta-btn:hover {
+  background: var(--color-success);
+  border: 1px solid var(--color-text);
+  border-radius: 6px;
+}
+.cta-btn.secondary {
+  background: var(--color-accent);
+  color: var(--color-text);
+}
+.cta-btn.secondary:hover {
+  background: var(--color-success);
+}
+.or-divider {
+  margin: 1.2rem 0;
+  color: var(--color-primary-accent);
+  font-size: 0.95rem;
+}
 
-  .landing-title {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-    color: var(--color-primary-accent);
-    font-family: 'Nunito', Arial, sans-serif;
-  }
-  .landing-desc {
-    color: var(--color-primary-accent);
-    margin-bottom: 2rem;
-  }
-  .cta-btn {
-    display: block;
-    width: 100%;
-    margin: 0.5rem 0;
-    padding: 0.9rem;
-    font-size: 1.1rem;
-    border: 1px solid var(--color-text);
-    border-radius: 6px;
-    background: var(--color-background);
-    color: var(--color-text);
-    text-decoration: none;
-    transition: background 0.2s;
-  }
-  .cta-btn:hover {
-    background: var(--color-success);
-    border: 1px solid var(--color-text);
-    border-radius: 6px;
-  }
-  .cta-btn.secondary {
-    background: var(--color-accent);
-    color: var(--color-text);
-  }
-  .cta-btn.secondary:hover {
-    background: var(--color-success);
-  }
-  .or-divider {
-    margin: 1.2rem 0;
-    color: var(--color-primary-accent);
-    font-size: 0.95rem;
-  }
-
-
-
-/* Login Page Styles */
+/* ========================= */
+/*         LOGIN PAGE        */
+/* ========================= */
 .login-container {
   margin-top: 60px;
   margin-bottom: 60px;
@@ -198,25 +150,73 @@ body {
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
 }
 
-.main-btn-primary {
+/* ========================= */
+/*         BUTTONS           */
+/* ========================= */
+.btn-custom {
+  display: inline-block;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  border: 1.5px solid var(--color-text);
   background: var(--color-background);
   color: var(--color-text);
-  border: 1.5px solid var(--color-text);
-  transition: background 0.2s, color 0.2s;
   box-shadow: 0 4px 16px 0 rgba(0,0,0,0.12), 0 1.5px 4px 0 rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s, border 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  text-decoration: none;
 }
-.main-btn-primary:hover {
+
+.btn-custom:hover {
   background: var(--color-primary-accent);
   color: var(--color-background);
   border: 1.5px solid var(--color-background);
   box-shadow: none;
 }
 
-  
+/* Primary button variant */
+.btn-primary-custom {
+  background: var(--color-background);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-text);
+}
+
+.btn-primary-custom:hover {
+  background: var(--color-primary-accent);
+  color: var(--color-background);
+  border: 1.5px solid var(--color-background);
+}
+
+/* Success/Accent button variant */
+.btn-accent-custom {
+  background: var(--color-primary);
+  color: var(--color-text);
+  border: 1.5px solid var(--color-text);
+}
+
+.btn-accent-custom:hover {
+  background: var(--color-primary-accent);
+  color: var(--color-background);
+  border: 1.5px solid var(--color-background);
+}
+
+/* Danger button variant */
+.btn-danger-custom {
+  background: var(--color-accent);
+  color: var(--color-background);
+  border: 1px solid var(--color-background);
+}
+
+.btn-danger-custom:hover {
+  background: var(--color-error);
+  color: var(--color-background);
+  border: 1px solid var(--color-background);
+}
+
 /* ========================= */
 /*         TASK PAGE         */
 /* ========================= */
-
 .task-container {
   background: var(--color-secondary);
   border-radius: 14px;
@@ -226,193 +226,75 @@ body {
   margin: 2.5rem auto 2.5rem auto;
   max-width: 600px;
 }
-
 .task-title {
   font-size: 1.5rem;
   font-family: 'Nunito', Arial, sans-serif;
   color: var(--color-primary-accent);
   margin-bottom: 1rem;
 }
-
 .task-desc {
   color: var(--color-text);
   margin-bottom: 1.5rem;
   font-size: 1.1rem;
 }
-
 .task-meta {
   font-size: 0.95rem;
   color: var(--color-accent);
   margin-bottom: 1rem;
 }
-
 .task-actions {
-  
   display: flex;
   align-items: center;
-  gap: 0.2rem; /* space between icons */
+  gap: 0.2rem;
   justify-content: flex-end;
   margin-left: 1rem;
 }
 
-.add-task-btn {
-  background: var(--color-primary);
-  color: var(--color-text);
-  border: 1.5px solid var(--color-success);
-  letter-spacing: 0.5px;
-  box-shadow: 0 4px 16px 0 rgba(80, 180, 120, 0.10), 0 1.5px 4px 0 rgba(0,0,0,0.08);
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-}
-
-.add-task-btn:hover {
-  background: var(--color-primary-accent);
-  color: var(--color-background);
-  border: 1.5px solid var(--color-primary-accent);
-  box-shadow: none;
-}
-
 /* ========================= */
-  /*       TASK ICONS          */
-  /* ========================= */
-  /* Shared icon link styles */
-  .add-icon-link,
-  .edit-icon-link,
-  .delete-icon-link {
-    background: none !important;
-    border: none !important;
-    padding: 0.25rem 0.5rem;
-    box-shadow: none !important;
-    text-decoration: none !important;
-  }
-  /* Add icon  */
-  .add-icon-link .bi-plus-circle-fill {
-    color: var(--color-primary-accent);
-    font-size: 1.2em;
-    vertical-align: middle;
-    transition: color 0.2s;
-  }
-  .add-icon-link:hover .bi-plus-circle-fill {
-    color: var(--color-primary);
-  }
-  /* Delete icon */
-  .delete-icon-link .bi-trash-fill {
-    color: var(--color-accent);
-    font-size: 1.2em;
-    vertical-align: middle;
-    transition: color 0.2s;
-  }
-  .delete-icon-link:hover .bi-trash-fill {
-    color: var(--color-error);
-  }
-  /* Edit icon */
-  .edit-icon-link .bi-pencil-fill {
-    color: var(--color-primary-accent);
-    font-size: 1.2em;
-    vertical-align: middle;
-  }
-  .edit-icon-link:hover .bi-pencil-fill {
-    color: var(--color-primary) !important;
-    text-shadow: 0 2px 8px rgba(107,154,196,0.12);
-    transition: color 0.2s, text-shadow 0.2s;
-  }
-
-  /* ========================= */
-  /*      PROGRESS BAR        */
-  /* ========================= */
-
-  /* Style the progress bar container (incomplete area) */
-.list-progress-bar {
-  background-color: #fff !important;      /* White background for incomplete area */
-  width: 100%;
-  border: 1px solid var(--color-text);
+/*         LIST GROUPS       */
+/* ========================= */
+.list-group-item {
+  background: var(--color-background) !important;
+  color: var(--color-text) !important;
+  border: solid 1px var(--color-primary);
   border-radius: 8px;
-  overflow: hidden;
-  height: 16px;
+  box-shadow: 0 4px 16px 0 rgba(80, 180, 120, 0.10), 0 1.5px 4px 0 rgba(0,0,0,0.08);
 }
-
-/* Style the completed portion of the bar */
-.progress-bar.bg-success {
-  background-color: var(--color-success) !important; /* Use your theme's green */
-  transition: width 1s;
-  border-radius: 8px 0 0 8px;
-}
-  
-  /* ========================= */
-  /*        LIST GROUPS       */
-  /* ========================= */
-  /* Style for each list group */
-  .list-group-item {
-    background: var(--color-background) !important;
-    color: var(--color-text) !important;
-    border: solid 1px var(--color-primary);
-    border-radius: 8px;         /* Rounded edges */
-    box-shadow: 0 4px 16px 0 rgba(80, 180, 120, 0.10), 0 1.5px 4px 0 rgba(0,0,0,0.08);
-    
-  }
-  /* Style for list items */
-  .list-item {
-    background: var(--color-background) !important;
-    color: var(--color-text) !important;
-    border-radius: 8px;         /* Rounded edges */
-    margin-bottom: 0.5rem;      /* Space below each task */
-    border: 1px solid #e3e8ef;  /* Optional: subtle border for definition */
-    box-shadow: 0 2px 8px rgba(80,120,180,0.10), 0 1.5px 4px rgba(0,0,0,0.08); /* More visible shadow */
-    transition: background 0.2s, box-shadow 0.2s;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  /* Prevent long task titles from overflowing the list item */
-  .list-item .task-completed,
-  .list-item span:not(.task-completed) {
-    word-break: break-word;
-    white-space: normal;
-    overflow-wrap: anywhere;
-    max-width: clamp(200px, 60vw, 500px);
-    display: inline-block;
-    vertical-align: middle;
-  }
-
-  .list-item.task-completed {
-    background: var(--color-success) !important;
-    color: var(--color-text) !important;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;      /* Space below each task */
-    border: 1px solid #e3e8ef;  /* Optional: subtle border for definition */
-    box-shadow: 0 2px 8px rgba(80,120,180,0.10), 0 1.5px 4px rgba(0,0,0,0.08); /* More visible shadow */
-  }
-
-
-
-/* Style the chevron icon button */
-.chevron-toggle .bi-chevron-down {
-  color: var(--color-primary-accent);
-  font-size: 1.3em;
-  transition: transform 0.3s, color 0.2s;
-  vertical-align: middle;
-}
-
-/* Optional: hover effect */
-.chevron-toggle:hover .bi-chevron-down {
-  color: var(--color-primary);
-}
-
-/* Make the form and icons flex children */
 .list-item {
+  background: var(--color-background) !important;
+  color: var(--color-text) !important;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+  border: 1px solid #e3e8ef;
+  box-shadow: 0 2px 8px rgba(80,120,180,0.10), 0 1.5px 4px rgba(0,0,0,0.08);
+  transition: background 0.2s, box-shadow 0.2s;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+.list-item.task-completed {
+  background: var(--color-success) !important;
+  color: var(--color-text) !important;
+}
+.list-item .task-completed,
+.list-item span:not(.task-completed) {
+  word-break: break-word;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  max-width: clamp(200px, 60vw, 500px);
+  display: inline-block;
+  vertical-align: middle;
+}
 
-/* Make the form grow to fill space, but not overflow */
+/* ========================= */
+/*         FORMS & INPUTS    */
+/* ========================= */
 .list-item form {
   display: flex;
   align-items: center;
   flex-grow: 1;
   min-width: 0;
 }
-
-/* Constrain the task text so it wraps but doesn't push icons */
 .task-title-text {
   flex: 1 1 0;
   min-width: 0;
@@ -422,18 +304,6 @@ body {
   overflow-wrap: anywhere;
   display: block;
 }
-
-/* Keep icons together and prevent shrinking */
-.task-actions {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-shrink: 0;
-  margin-left: 1rem;
-}
-
-/* Style the task toggle checkbox */
-/* Hide the native checkbox */
 .form-check-input {
   appearance: none;
   -webkit-appearance: none;
@@ -448,14 +318,10 @@ body {
   position: relative;
   cursor: pointer;
 }
-
-/* Show a custom tick when checked */
 .form-check-input:checked {
   background-color: var(--color-background);
   border-color: var(--color-accent);
-  
 }
-
 .form-check-input:checked::after {
   content: '';
   display: block;
@@ -469,21 +335,84 @@ body {
   transform: rotate(45deg);
   box-shadow: 0 1px 4px rgba(80,120,180,0.06);
 }
-
-/* Focus state */
 .form-check-input:focus {
   outline: none;
   border-color: var(--color-error);
   box-shadow: 0 0 0 2px rgba(247,198,199,0.25);
 }
 
+/* ========================= */
+/*         ICONS             */
+/* ========================= */
+.add-icon-link,
+.edit-icon-link,
+.delete-icon-link {
+  background: none !important;
+  border: none !important;
+  padding: 0.25rem 0.5rem;
+  box-shadow: none !important;
+  text-decoration: none !important;
+}
+.add-icon-link .bi-plus-circle-fill {
+  color: var(--color-primary-accent);
+  font-size: 1.2em;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+.add-icon-link:hover .bi-plus-circle-fill {
+  color: var(--color-primary);
+}
+.delete-icon-link .bi-trash-fill {
+  color: var(--color-accent);
+  font-size: 1.2em;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+.delete-icon-link:hover .bi-trash-fill {
+  color: var(--color-error);
+}
+.edit-icon-link .bi-pencil-fill {
+  color: var(--color-primary-accent);
+  font-size: 1.2em;
+  vertical-align: middle;
+}
+.edit-icon-link:hover .bi-pencil-fill {
+  color: var(--color-primary) !important;
+  text-shadow: 0 2px 8px rgba(107,154,196,0.12);
+  transition: color 0.2s, text-shadow 0.2s;
+}
+.chevron-toggle .bi-chevron-down {
+  color: var(--color-primary-accent);
+  font-size: 1.3em;
+  transition: transform 0.3s, color 0.2s;
+  vertical-align: middle;
+}
+.chevron-toggle:hover .bi-chevron-down {
+  color: var(--color-primary);
+}
 
+/* ========================= */
+/*      PROGRESS BAR         */
+/* ========================= */
+.list-progress-bar {
+  background-color: #fff !important;
+  width: 100%;
+  border: 1px solid var(--color-text);
+  border-radius: 8px;
+  overflow: hidden;
+  height: 16px;
+}
+.progress-bar.bg-success {
+  background-color: var(--color-success) !important;
+  transition: width 1s;
+  border-radius: 8px 0 0 8px;
+}
 
-  /* ========================= */
-  /*      MEDIA QUERIES        */
-  /* ========================= */
-  @media (min-width: 768px) {
-    .list-progress-bar {
-      width: 50%;
-    }
+/* ========================= */
+/*      MEDIA QUERIES        */
+/* ========================= */
+@media (min-width: 768px) {
+  .list-progress-bar {
+    width: 50%;
   }
+}

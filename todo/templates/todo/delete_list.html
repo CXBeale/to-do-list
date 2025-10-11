@@ -5,8 +5,8 @@
     <p>Are you sure you want to delete this list? This will also delete all tasks in this list.</p>
     <form method="post">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger">Delete</button>
-        <a href="{% url 'list_overview' %}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn-custom btn-danger-custom">Delete</button>
+        <a href="{% url 'list_overview' %}" class="btn-custom btn-primary-custom">Cancel</a>
     </form>
 </div>
 {% endblock %}
