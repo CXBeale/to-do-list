@@ -3,6 +3,7 @@ from .forms import TaskForm
 from .models import Task, List
 from .forms_list import ListForm
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 
 
 # Create your views here.
@@ -78,6 +79,22 @@ def toggle_complete(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
     task.completed = not task.completed
     task.save()
+
+    if request.headers.get('x-requested-with') == 'XMLHttpRequest':
+        # Get updated values
+        task = Task.objects.get(id=task_id)
+        list_obj = task.list
+        completed_tasks = list_obj.tasks.filter(completed=True).count()
+        total_tasks = list_obj.tasks.count()
+        percent = int((completed_tasks / total_tasks) * 100) if total_tasks else 0
+        return JsonResponse({
+            'completed': task.completed,
+            'completed_tasks': completed_tasks,
+            'total_tasks': total_tasks,
+            'percent': percent,
+            'task_id': task.id,
+            'list_id': list_obj.id,
+        })
     return redirect('list_overview')
 
 
