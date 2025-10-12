@@ -1,12 +1,16 @@
 {% extends 'todo/base.html' %}
 {% block content %}
-<div class="container mt-4">
-    <h2>Edit List: {{ list.list_name }}</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn-custom btn-accent-custom">Save Changes</button>
-        <a href="{% url 'list_overview' %}" class="btn-custom btn-primary-custom">Cancel</a>
-    </form>
+<div class="centered-form-viewport">
+    <div class="task-container task-form-container">
+        <h2 class="mb-4 text-center">Edit List: {{ list.list_name }}</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="d-flex justify-content-between mt-4">
+                <button type="submit" class="btn-custom btn-accent-custom">Save Changes</button>
+                <a href="{% url 'list_overview' %}" class="btn-custom btn-primary-custom">Cancel</a>
+            </div>
+        </form>
+    </div>
 </div>
 {% endblock %}
