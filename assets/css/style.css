@@ -153,6 +153,64 @@ h1, h2, h3 {
 }
 
 /* ========================= */
+/*       ADD/EDIT PAGES      */
+/* ========================= */
+
+/* Centered viewport for add/edit forms */
+.centered-form-viewport {
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container width for add/edit forms */
+.task-form-container {
+  max-width: 480px;
+  width: 100%;
+}
+
+/* ========================= */
+/*    ADD/EDIT FORM INPUTS   */
+/* ========================= */
+.task-form-container input[type="text"],
+.task-form-container input[type="email"],
+.task-form-container input[type="password"],
+.task-form-container input[type="date"],
+.task-form-container input[type="number"],
+.task-form-container textarea,
+.task-form-container select {
+  display: block;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  margin-bottom: 1.2rem;
+  border: 1.5px solid var(--color-primary-accent);
+  border-radius: 6px;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-size: 1rem;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
+}
+
+.task-form-container input:focus,
+.task-form-container textarea:focus,
+.task-form-container select:focus {
+  border-color: var(--color-accent);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(245,183,177,0.15);
+}
+
+/* Optional: Style labels for better alignment */
+.task-form-container label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+  color: var(--color-primary-accent);
+}
+
+/* ========================= */
 /*         BUTTONS           */
 /* ========================= */
 .btn-custom {
@@ -342,6 +400,7 @@ h1, h2, h3 {
   border-color: var(--color-error);
   box-shadow: 0 0 0 2px rgba(247,198,199,0.25);
 }
+
 
 /* ========================= */
 /*         ICONS             */
