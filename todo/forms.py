@@ -4,7 +4,7 @@ from .models import Task, List
 class TaskForm(forms.ModelForm):
     class Meta:
         model = Task
-        fields = ['title', 'due_date', 'list']  # exclude 'completed'
+        fields = ['title', 'list']  # exclude 'completed'
 
     # override init to filter list choices by user
     def __init__(self, *args, **kwargs):
