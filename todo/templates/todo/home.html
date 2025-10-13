@@ -2,11 +2,13 @@
 {% block title %}Welcome | To-Do List{% endblock %}
 {% block content %}
     <div class="landing-container">
-        <div class="landing-title">Welcome to To-Do List</div>
-        <div class="landing-desc">Organize your tasks, boost your productivity, and never forget a thing. Sign in or create an account to get started!</div>
+        <div class="landing-title">Welcome to Task Garden</div>
+        
         {% if user.is_authenticated %}
+            <div class="landing-desc">Organize your tasks, boost your productivity, and never forget a thing. Head to your task list to get started.</div>
             <a href="{% url 'list_overview' %}" class="btn-custom btn-accent-custom w-100 mb-2">Go to My Tasks</a>
         {% else %}
+            <div class="landing-desc">Organize your tasks, boost your productivity, and never forget a thing. Sign in or create an account to get started!</div>
             <a href="{% url 'account_login' %}" class="btn-custom btn-primary-custom w-100 mb-2">Sign In</a>
             <div class="or-divider">or</div>
             <a href="{% url 'account_signup' %}" class="btn-custom btn-accent-custom w-100">Sign Up</a>
